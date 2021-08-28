@@ -1,0 +1,73 @@
+.ano {
+  margin: 0 auto;
+  background: darken($materia, 7%);
+
+  @media (min-width: $tablet) {
+    flex: 1 0 50%;
+  }
+
+  @media (min-width: $laptop) {
+    flex: 1 0 33.333333%;
+  }
+
+  @media (min-width: $desktop) {
+    flex: 1 0 25%;
+  }
+
+  @media (min-width: $desktop-large) {
+    flex: 1 0 20%;
+  }
+}
+
+@each $ano, $color in $anos {
+  .ano--#{$ano} {
+    border-left: 5px solid darken($color, 7%);
+
+    .ano__titulo {
+      background-color: $color;
+
+      &:after { border-color: darken($color, 7%); }
+      &:active { background: darken($color, 7%); }
+    }
+  }
+}
+
+.ano__titulo {
+  background-color: #999;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  font-size: .7em;
+  margin: 0;
+  padding: 12px;
+  position: sticky;
+  text-transform: uppercase;
+  top: -1px;
+  z-index: 2;
+
+  &:after {
+    border-bottom: 4px solid #eee;
+    border-left: 4px solid #eee;
+    content: '';
+    display: block;
+    height: 9px;
+    transform: rotate(-45deg);
+    transition: border-color .3s;
+    width: 15px;
+
+    .ano--aprobado & {
+      border-color: #eee;
+    }
+  }
+}
+
+.ano__subtitulo {
+  background: darken($materia, 7%);
+  color: #444;
+  font-size: .7em;
+  font-weight: normal;
+  margin: 0;
+  padding: 8px 12px;
+  text-transform: uppercase;
+}
